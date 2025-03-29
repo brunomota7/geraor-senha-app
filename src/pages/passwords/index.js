@@ -17,7 +17,7 @@ export function PasswordsScreen() {
         }
 
         loadPassword();
-    }, [focused])
+    }, [focused]);
 
     async function handleDeletePassword(item) {
         const passwords = await removeItem("@pass", item);
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         paddingRight: 14,
     },
     title: {
-        fontSize: 18,
+        fontSize: 24,
         color: "#FFF",
         fontWeight: "bold",
     },
