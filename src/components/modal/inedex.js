@@ -1,6 +1,5 @@
 import { 
     Alert,
-    Pressable,
     StyleSheet, 
     Text, 
     TouchableOpacity, 
@@ -8,6 +7,7 @@ import {
 } from "react-native";
 import * as Clipboard from 'expo-clipboard';
 import useStorage from '../../hooks/useStorage.js';
+import { Copy } from "lucide-react-native";
 
 export function ModalPassword({ password, handleClose }) {
   const {saveItem} = useStorage();
@@ -15,8 +15,6 @@ export function ModalPassword({ password, handleClose }) {
   async function handleCopyPassword() {
     await Clipboard.setStringAsync(password);
     Alert.alert("Senha copiada!");
-
-    handleClose();
   }
 
   async function handleSavePassword() {
@@ -31,9 +29,12 @@ export function ModalPassword({ password, handleClose }) {
       <View style={styles.content}>
         <Text style={styles.title}>Senha gerada</Text>
 
-        <Pressable style={styles.innerPasswor} onLongPress={handleCopyPassword}>
+        <View style={styles.innerPasswor}>
             <Text style={styles.textPassword}>{password}</Text>
-        </Pressable>
+            <TouchableOpacity onPress={handleCopyPassword}>
+              <Copy size={20} color={"#FFF"}/>
+            </TouchableOpacity>
+        </View>
 
         <View style={styles.buttonArea}>
            <TouchableOpacity style={styles.button} onPress={handleClose}>
@@ -73,6 +74,8 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   innerPasswor: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     backgroundColor: "#0e0e0e",
     width: "90%",
     padding: 14,

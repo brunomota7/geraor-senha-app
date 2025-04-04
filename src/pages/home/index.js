@@ -28,6 +28,7 @@ export function HomeScreen() {
       />
 
       <Text style={styles.title}>{size} Caracteres</Text>
+      <Text style={styles.titleLabel}>Escolha o tamanho da sua senha: </Text>
 
       <View style={styles.area}>
         <Slider
@@ -63,6 +64,11 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginBottom: 60,
+  },
+  titleLabel: {
+    fontSize: 18,
+    fontWeight: 400,
+    marginTop: 5,
   },
   title: {
     fontSize: 30,
